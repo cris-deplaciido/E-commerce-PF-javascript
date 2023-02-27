@@ -1,12 +1,13 @@
-let productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito"));
-productosEnCarrito = JSON.parse(productosEnCarrito)
+const productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito"));
+//productosEnCarrito = JSON.parse(productosEnCarrito)
 
 const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
 const contenedorCarritoProductos = document.querySelector("#carrito-productos");
 const contenedorCarritoAcciones = document.querySelector("#carrito-acciones");
 const contenedorCarritoComprado = document.querySelector("#carrito-comprado");
 
-function cargarProductosCarrito()
+//function cargarProductosCarrito()
+
     if (productosEnCarrito) {
     
     contenedorCarritoVacio.classList.add("disabled");
@@ -15,8 +16,9 @@ function cargarProductosCarrito()
     contenedorCarritoComprado.classList.add("disabled");
 
     contenedorCarritoProductos.innerHTML = "";
-    
+
     productosEnCarrito.forEach(producto => {
+
         const div = document.createElement("div");
         div.classList.add("carrito-producto");
         div.innerHTML = ` 
@@ -31,19 +33,23 @@ function cargarProductosCarrito()
         </div>
         <div class="carrito-producto-precio">
             <small>Precio</small>
-            <p>$${producto.precio * producto.cantidad}</p>
+            <p>$${producto.precio}</p>
         </div>
         <div class="carrito-producto-subtotal">
             <small>Subtotal</small>
-            <p>$14000</p>
+            <p>$${producto.precio * producto.cantidad}</p>
         </div>
         <button class="carrito-producto-eliminar" id="${producto.id}"><i class="bi bi-trash"></i></button>
     `;
 
     contenedorCarritoProductos.append(div);
-})
-    
 
-} else {
+})
+
+
+    } else { 
     
-}
+    }
+
+
+

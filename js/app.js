@@ -86,8 +86,8 @@ const productos = [
         img:
         "./img/oferta5.5.webp",
         categoria: {
-            nombre: "Sillon",
-            id: "sillon"
+            nombre: "cuchetas",
+            id: "cuchetas"
         },
     },
     {
@@ -181,7 +181,7 @@ const productos = [
 ];
 
 const contenedorProductos = document.querySelector("#contenedor-productos");
-const botonesCategorias = document.querySelectorAll(".boton-productos");
+const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
 let botonesAgregar = document.querySelectorAll(".producto-agregar");
 const numerito = document.querySelector("#numerito");
@@ -192,6 +192,8 @@ botonesCategorias.forEach(boton => boton.addEventListener("click", () => {
 
 
 function cargarProductos(productosElegidos) { 
+
+    contenedorProductos.innerHTML = "";
 
     productosElegidos.forEach(producto => {
         
@@ -222,13 +224,13 @@ function cargarProductos(productosElegidos) {
             if (e.currentTarget.id != "todos") {
                 const productoCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id);
                 tituloPrincipal.innerText = productoCategoria.categoria.nombre;
+
                 const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id);
                 cargarProductos(productosBoton);
             } else {
                 tituloPrincipal.innerText = "Todos los productos";
-                cargarProductos();
+                cargarProductos(productos);
             }
-    
         }) 
     });
 
@@ -241,12 +243,11 @@ function cargarProductos(productosElegidos) {
     }
 
     let productosEnCarrito;
-
-    let productosEnCarritoLS = localStorage.getItem("producto-en-carrito");
+    const productosEnCarritoLS = JSON.parse(localStorage.getItem("productos-en-carrito"));
 
     if (productosEnCarritoLS) {
-        productosEnCarrito = JSON.parse(productosEnCarritoLS);
-        actualizarNumerito();
+        productosEnCarrito = productosEnCarritoLS
+        actualizarNumerito()
     } else {
         productosEnCarrito = [];
     }
