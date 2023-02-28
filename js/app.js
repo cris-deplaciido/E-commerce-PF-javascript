@@ -1,184 +1,12 @@
-const productos = [ 
+let productos = [];
 
-    {
-        id: "Mesa ratona",
-        Titulo: "Mesa ratona",
-        precio: 10000 ,
-        img:
-        "./img/post10b.webp",
-        categoria: {
-            nombre: "mesas",
-            id: "mesas"
-        },
-    },
-    {
-        id: "Sillon",
-        Titulo: "Sillon",
-        precio: 15000,
-        img:
-        "./img/sillon4.webp",
-        categoria: {
-            nombre: "sillones",
-            id: "sillones"
-        },
-        
-    },
-    {
-        id:  "Sillon xl",
-        Titulo: "Sillon xl",
-        precio: 12000,
-        img:
-        "./img/sillon-hong kong a.webp",
-        categoria: {
-            nombre: "sillones",
-            id: "sillones"
-        },
-    },
-    {
-        id: "Sommier-",
-        Titulo: "Sommier-",
-        precio: 9000,
-        img:
-        "./img/oferta6.6bis.webp",
-        categoria: {
-            nombre: "sommier",
-            id: "sommier"
-        },
-    },
-    {
-        id: "Placar corredizo",
-        Titulo: "Placar corredizo",
-        precio: 13000,
-        img:
-        "./img/placard2.webp",
-        categoria: {
-            nombre: "placar.c",
-            id: "placar-c"
-        },
-    },
-    {
-        id: "Escritorio-F",
-        Titulo: "Escritorio-F",
-        precio: 10000,
-        img:
-        "./img/oferta2.2.webp",
-        categoria: {
-            nombre: "escritorio",
-            id: "escritorio"
-        },
-    
-    },
-    {
-        id: "Ropero",
-        Titulo: "Ropero",
-        precio: 11000,
-        img:
-        "./img/oferta4.4.webp",
-        categoria: {
-            nombre: "roperos",
-            id: "roperos"
-        },
-    },
-    {
-        id: "Cucheta",
-        Titulo: "Cucheta",
-        precio: 7000,
-        img:
-        "./img/oferta5.5.webp",
-        categoria: {
-            nombre: "cuchetas",
-            id: "cuchetas"
-        },
-    },
-    {
-        id: "Sillon-N",
-        Titulo: "Sillon-N",
-        precio: 7000,
-        img:
-        "./img/sillon3.webp",
-        categoria: {
-            nombre: "sillones",
-            id: "sillones"
-        },
-    },
-    {
-        id: "Silla-6",
-        Titulo: "Silla-6",
-        precio: 7000,
-        img:
-        "./img/sillas6.webp",
-        categoria: {
-            nombre: "sillas",
-            id: "sillas"
-        },
-    },
-    {
-        id: "Silla-3",
-        Titulo: "Silla-3",
-        precio: 7000,
-        img:
-        "./img/silla3.webp",
-        categoria: {
-            nombre: "sillas",
-            id: "sillas"
-        },
-    },
-    {
-        id: "Silla-4",
-        Titulo: "Silla-4",
-        precio: 7000,
-        img:
-        "./img/silla4.webp",
-        categoria: {
-            nombre: "sillas",
-            id: "sillas"
-        },
-    },
-    {
-        id: "Mesa-3",
-        Titulo: "Mesa-3",
-        precio: 7000,
-        img:
-        "./img/mesa3 (1).webp",
-        categoria: {
-            nombre: "mesas",
-            id: "mesas"
-        },
-    },
-    {
-        id: "Mesa-D",
-        Titulo: "Mesa-D",
-        precio: 7000,
-        img:
-        "./img/mesita1.webp",
-        categoria: {
-            nombre: "mesas",
-            id: "mesas"
-        },
-    },
-    {
-        id: "Mesa-Luz",
-        Titulo: "Mesa-Luz",
-        precio: 7000,
-        img:
-        "./img/oferta1.1.webp",
-        categoria: {
-            nombre: "mesas",
-            id: "mesas"
-        },
-    },
-    {
-        id: "Sillon-came",
-        Titulo: "Sillon-cama",
-        precio: 7000,
-        img:
-        "./img/sillon6.webp",
-        categoria: {
-            nombre: "sillones",
-            id: "sillones"
-        },
-    },
-];
+fetch("./js/productos.json")
+        .then(response => response.json())
+        .then(data => {
+            productos = data;
+            cargarProductos(productos); 
+        })
+
 
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
@@ -213,7 +41,6 @@ function cargarProductos(productosElegidos) {
         actualizarBotonesAgregar();
     }
 
-    cargarProductos(productos); 
 
     botonesCategorias.forEach(boton => {
         boton.addEventListener("click", (e) => {
@@ -255,7 +82,22 @@ function cargarProductos(productosElegidos) {
     
 
     function agregarAlCarrito(e) {
-        
+
+        Toastify({
+            text: "Producto Agregado",
+            duration: 3000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+            background: "linear-gradient(#648DAE, #8BCA13)",
+            textTransform: "uppercase",
+            fontSize:".75rem"
+            },
+            onClick: function(){} // Callback after click
+        }).showToast();
+
         const idBoton = e.currentTarget.id;
         const productoAgregado = productos.find(producto => producto.id === idBoton);
         
