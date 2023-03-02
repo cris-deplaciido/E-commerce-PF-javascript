@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Mukta:wght@500&family=Ubuntu:wght@300&display=swap');
 
 :root {
-    --clr-main: #2E4558;
-    --clr-main-light: #785ce9;
+    --clr-main: #295F6F; 
+    --clr-main-light: ;
     --clr-white: #f3f2ed;
     --clr-gray: #e2e2e2;
     --clr-red: #f70606;
     --clr-wood: #d4b97e;
     --clr-black: #000000;
+    /*#2E4558*/
 }
 
 * {
-    margin: 0;
+    margin: 0%;
     padding: 0;
     box-sizing: border-box;
     font-family: 'lalezar', Mukta; 
@@ -46,6 +47,18 @@ aside {
     justify-content:  space-between;
 }
 
+.logo-imagen {
+    display: flex;
+    justify-content: center;
+    margin: 0rem;
+}
+
+.logo-imagen img {
+    width: 85%;
+    height: auto;
+    border-radius: 5%;
+} 
+
 .logo { 
     font-weight: 400;
     font-size: 1.3rem;
@@ -67,7 +80,7 @@ aside {
     align-items: center;
     gap: 1rem;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1rem;
     padding: 1rem;
     width: 100%;
 }
@@ -117,10 +130,6 @@ aside {
     border-radius: .25rem;
 }
 
-.texto-footer {
-    color: var(--clr-black);
-    font-size: .85rem;
-}
 
 main {
     background-color: var(--clr-white);
@@ -179,6 +188,22 @@ main {
     color: var(--clr-white);
 }
 
+.imagen-footer {
+    display: flex;
+    justify-content: start;
+    text-align: start;
+}
+
+.imagen-footer img {
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+}
+
+.texto-footer {
+    color: var(--clr-gray);
+    font-size: 1rem;
+}
 
 /* CARRITO */
 
